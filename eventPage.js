@@ -128,24 +128,26 @@ function fetchCatalogIdInJSON(JSONfile, catalog) {
  * online. If not, it won't be downloaded
  * @param {*} JSONfile  filmdatainfo.json
  * @param {*} catalog   catalog number
+
+  Update: commenting this out because somehow that makes the extension work.
  */
 function isAvailableOnline(JSONfile, catalog) {
-    const i = fetchCatalogIdInJSON(JSONfile, catalog);
-    if (i>=JSONfile.catalogs.length){ // catalog data not found in filmdata.json
-        alert("Couldn't fetch catalog data from JSON");
-        return false;
-    }else{
-        if (JSONfile.catalogs[i].data.available_online[0] === "Y"){
-            return true;
-        }
-        /**
-         * De alguma maneira, nem todos os registros disponíveis online estão marcados com Y,
-         * então temporariamente estou removendo a restrição
-         */
-        return true;
-    }
-    return false;
-
+    // const i = fetchCatalogIdInJSON(JSONfile, catalog);
+    // if (i>=JSONfile.catalogs.length){ // catalog data not found in filmdata.json
+    //     alert("Couldn't fetch catalog data from JSON");
+    //     return false;
+    // }else{
+    //     if (JSONfile.catalogs[i].data.available_online[0] === "Y"){
+    //         return true;
+    //     }
+    //     /**
+    //      * De alguma maneira, nem todos os registros disponíveis online estão marcados com Y,
+    //      * então temporariamente estou removendo a restrição
+    //      */
+    //     return true;
+    // }
+    // return false;
+  return true;
 }
 /**
  *  Fetches filmdatainfo.json data
@@ -195,9 +197,3 @@ function requestJSON(params) {
     xhr.send(assembleParams(params.film_number, params.catalog_context, params.image_or_film_url));
     return images_data;
 }
-
-
-
-
-
-
